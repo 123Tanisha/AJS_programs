@@ -1,0 +1,60 @@
+<html>
+    <head>
+    <title>To Do List</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    </head>
+
+    <body ng-app="myApp" ng-controller="myCntrl">
+    <h1>To Do List </h1>
+
+    <form ng-submit="addTask()">
+        <label>Task</label>
+        <input type="text" ng-model="newTask">
+        <button type="submit">Add Task</button>
+    </form><br><br>
+
+        <table border="1">
+            <tr>
+                <th>Task</th>
+                <th>Action</th>
+            </tr>
+            <tr ng-repeat="task in tasks">
+            <td>{{task}}</td>
+            <td>
+            <button ng-click="editTask($index)">Edit</button>
+            <button ng-click="deleteTask($index)">Delete</button>
+	    </td> 
+	   </tr>
+	</table>
+
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("myCntrl",function($scope){
+        $scope.tasks=["Dancing","Sleeping","Singing"];
+
+        $scope.addTask=function()
+        {
+            $scope.tasks.push($scope.newTask);
+            $scope.newTask="";
+        };
+        $scope.editTask = function(index)
+        {
+            var updateTask=prompt("enter task to be update");
+            if  (updateTask!==null)
+            {
+                $scope.tasks[index]=updateTask;
+            }
+        };
+        $scope.deleteTask = function(index)
+        {
+            var confirmMsg=confirm("Are you sure want to delete this task?");
+            if(confirmMsg)
+            {
+                $scope.tasks.splice(index,1);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
