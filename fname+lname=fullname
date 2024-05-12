@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <title>Program 1</title>
+    </head>
+
+    <body>
+        <p>Student name</p>
+        <div ng-app="">
+<lable>Enter 1st name:<input type:"text" ng-model="Fname"></label>
+<lable>Enter last name:<input type:"text" ng-model="Lname"></label>
+
+<p>my name is {{Fname+" "+Lname}}</p>
+</div>
+    </body>
+</html>
