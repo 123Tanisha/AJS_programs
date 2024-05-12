@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <style>
+            table,th,td,tr
+            {
+                border: 1pt solid black;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="myCntrl">
+            <h1>STUDENT DETAILS</h1>
+            <p>Enter no. of students: <input type="digit" ng-model="num" /></p>
+            <button ng-click="addStudent()">Enter</button><br/><br/>
+            <table border="1" ng-show="list.length>0">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Student Name</th>
+                    <th>CGPA</th>
+                </tr>
+                <tr ng-repeat="x in list | limitTo:num">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.Name}}</td>
+                    <td>{{x.CGPA}}</td>
+                </tr>
+            </table>
+            <p>Total number of students are: {{num}}</p>
+        </div>
+
+        <script>
+            var elem=angular.module('myApp',[]);
+            elem.controller("myCntrl",function($scope)
+            {
+                $scope.list=[{'Name':'Tanvi','CGPA':'8.5'}, 
+                            {'Name':'Meetali','CGPA':'9.8'}, 
+                            {'Name':'Shreya','CGPA':'8.3'},
+                            {'Name':'Umme','CGPA':'8.3'},
+                            {'Name':'Shruti','CGPA':'8.4'},
+                            {'Name':'Priyanka','CGPA':'8.8'},
+                            {'Name':'Annapurna','CGPA':'8.2'},
+                            {'Name':'Sneha','CGPA':'8.0'},
+                            {'Name':'Priya','CGPA':'7.5'},
+                            {'Name':'Neha','CGPA':'8.1'}]
+                $scope.addStudent = function() 
+                {
+                    $scope.list = $scope.list.slice(0, $scope.num);
+                };
+            });
+        </script>
+    </body>
+</html>
