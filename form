@@ -1,0 +1,11 @@
+<html>
+<body>
+<form action="http://example.com/login.php">
+	<label>username</label>
+	<input type="text/" name="txtusername" id="uname"/><br/>
+	<label>password</label>
+	<input type="password/"name="txtpass" id="pass"><br/>
+	<input type="submit"/>
+</form>
+<body> 
+</html>
