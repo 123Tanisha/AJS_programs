@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+<h2>Students List</h2>
+
+<form ng-submit="displayStudents()">
+  <label for="num">Number of Students to Display:</label>
+  <input type="number" id="num" name="num" ng-model="numStudents"><br>
+</form>
+
+<table>
+  <tr>
+    <th>Sl No</th>
+    <th>Name</th>
+    <th>CGPA</th>
+  </tr>
+  <tr ng-repeat="student in students | limitTo:numStudents track by $index">
+    <td>{{ $index + 1 }}</td>
+    <td>{{ student.Name }}</td>
+    <td>{{ student.CGPA }}</td>
+  </tr>
+</table>
+
+<p>Total number of students: {{students.length}}</p>
+<p>Number of students fetched: {{numStudents}}</p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.students = [
+    {Name: 'Student1', CGPA: 78.45},
+    {Name: 'Student2', CGPA: 88.90},
+    {Name: 'Student3', CGPA: 92.67},
+    {Name: 'Student4', CGPA: 85.23},
+    {Name: 'Student5', CGPA: 91.56}
+  ];
+  $scope.numStudents = 0;
+  $scope.displayStudents = function() {
+  };
+});
+</script>
+
+</body>
+</html>
